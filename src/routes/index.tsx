@@ -1,6 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import logo from "@/assets/harmoniz/logo.png";
-import logoWhite from "@/assets/harmoniz/logo-white.png";
 import hero from "@/assets/harmoniz/hero.jpg";
 import qualidade from "@/assets/harmoniz/qualidade.jpeg";
 import sustentabilidade from "@/assets/harmoniz/sustentabilidade.jpg";
@@ -13,8 +11,10 @@ import zygopetalum from "@/assets/harmoniz/zygopetalum.jpeg";
 import cymbidium from "@/assets/harmoniz/cymbidium.jpg";
 import oncidium from "@/assets/harmoniz/oncidium.jpeg";
 import cattleya from "@/assets/harmoniz/cattleya.jpeg";
-import veiling from "@/assets/harmoniz/veiling.png";
-import { Instagram, Facebook, ArrowRight, MapPin, Mail, Phone } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { SiteNav } from "@/components/site-nav";
+import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -50,37 +50,6 @@ const species = [
   { img: cattleya, name: "Cattleya" },
 ];
 
-function Nav() {
-  const links = [
-    { href: "#sobre", label: "Sobre" },
-    { href: "#valores", label: "Valores" },
-    { href: "#especies", label: "Espécies" },
-    { href: "#contato", label: "Contato" },
-  ];
-  return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border/60">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2">
-          <img src={logo} alt="Harmoniz Orquídeas" className="h-12 w-auto" />
-        </a>
-        <nav className="hidden md:flex items-center gap-10 text-sm tracking-wide text-foreground/80">
-          {links.map((l) => (
-            <a key={l.href} href={l.href} className="hover:text-accent transition-colors">{l.label}</a>
-          ))}
-        </nav>
-        <div className="flex items-center gap-3">
-          <a href="https://www.instagram.com/harmoniz_orquideas/" target="_blank" rel="noreferrer" className="p-2 rounded-full hover:bg-secondary transition-colors" aria-label="Instagram">
-            <Instagram className="h-4 w-4" />
-          </a>
-          <a href="https://www.facebook.com/harmonizorquideas" target="_blank" rel="noreferrer" className="p-2 rounded-full hover:bg-secondary transition-colors" aria-label="Facebook">
-            <Facebook className="h-4 w-4" />
-          </a>
-        </div>
-      </div>
-    </header>
-  );
-}
-
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden">
@@ -95,12 +64,12 @@ function Hero() {
             Em 30 mil m² no bairro do Itapeti, em Mogi das Cruzes, produzimos quase 10 gêneros de orquídeas com propósito, delicadeza e distribuição para todo o Brasil.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <a href="#especies" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3.5 rounded-full text-sm tracking-wide hover:bg-primary/90 transition-colors">
+            <Link to="/galeria" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3.5 rounded-full text-sm tracking-wide hover:bg-primary/90 transition-colors">
               Conheça nossas espécies <ArrowRight className="h-4 w-4" />
-            </a>
-            <a href="#sobre" className="inline-flex items-center gap-2 border border-border px-6 py-3.5 rounded-full text-sm tracking-wide hover:bg-secondary transition-colors">
+            </Link>
+            <Link to="/sobre" className="inline-flex items-center gap-2 border border-border px-6 py-3.5 rounded-full text-sm tracking-wide hover:bg-secondary transition-colors">
               Sobre a Harmoniz
-            </a>
+            </Link>
           </div>
         </div>
         <div className="md:col-span-6 relative">
@@ -210,84 +179,25 @@ function Species() {
           </figure>
         ))}
       </div>
-    </section>
-  );
-}
-
-function Distribution() {
-  return (
-    <section className="bg-secondary/50 border-y border-border/60">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 grid md:grid-cols-12 gap-10 items-center">
-        <div className="md:col-span-4 flex justify-center">
-          <img src={veiling} alt="Veiling Holambra" className="max-h-32 w-auto" />
-        </div>
-        <div className="md:col-span-8">
-          <h3 className="font-display text-2xl md:text-3xl text-primary">Nossos produtos são comercializados exclusivamente pelo Veiling Holambra</h3>
-          <p className="mt-4 text-muted-foreground flex items-start gap-2">
-            <MapPin className="h-4 w-4 mt-1 shrink-0" />
-            Rodovia SP-107, km 27 — S/N, Zona Rural Veiling, Santo Antônio de Posse — SP
-          </p>
-          <div className="mt-3 flex flex-wrap gap-6 text-muted-foreground text-sm">
-            <span className="flex items-center gap-2"><Mail className="h-4 w-4" /> sac@cvh.com.br</span>
-            <span className="flex items-center gap-2"><Phone className="h-4 w-4" /> 0300 775 8955</span>
-          </div>
-        </div>
+      <div className="mt-12 flex justify-center">
+        <Link to="/galeria" className="inline-flex items-center gap-2 border border-border px-6 py-3.5 rounded-full text-sm hover:bg-secondary transition-colors">
+          Ver galeria completa <ArrowRight className="h-4 w-4" />
+        </Link>
       </div>
     </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer id="contato" className="bg-primary text-primary-foreground">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 grid md:grid-cols-12 gap-10">
-        <div className="md:col-span-5">
-          <img src={logoWhite} alt="Harmoniz" className="h-16 w-auto" />
-          <p className="mt-6 text-primary-foreground/70 max-w-sm leading-relaxed">
-            Orquídeas com alma, cultivadas com amor em Mogi das Cruzes e entregues em todo o Brasil.
-          </p>
-        </div>
-        <div className="md:col-span-4">
-          <p className="uppercase tracking-[0.3em] text-xs text-accent mb-4">Navegação</p>
-          <ul className="space-y-2 text-primary-foreground/80">
-            <li><a href="#sobre" className="hover:text-accent">Sobre</a></li>
-            <li><a href="#valores" className="hover:text-accent">Valores</a></li>
-            <li><a href="#especies" className="hover:text-accent">Espécies</a></li>
-          </ul>
-        </div>
-        <div className="md:col-span-3">
-          <p className="uppercase tracking-[0.3em] text-xs text-accent mb-4">Redes</p>
-          <div className="flex gap-3">
-            <a href="https://www.instagram.com/harmoniz_orquideas/" target="_blank" rel="noreferrer" className="p-3 rounded-full border border-primary-foreground/20 hover:bg-accent hover:border-accent transition-colors" aria-label="Instagram">
-              <Instagram className="h-4 w-4" />
-            </a>
-            <a href="https://www.facebook.com/harmonizorquideas" target="_blank" rel="noreferrer" className="p-3 rounded-full border border-primary-foreground/20 hover:bg-accent hover:border-accent transition-colors" aria-label="Facebook">
-              <Facebook className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-primary-foreground/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 text-xs text-primary-foreground/60 flex flex-wrap justify-between gap-3">
-          <span>© {new Date().getFullYear()} Harmoniz Orquídeas. Todos os direitos reservados.</span>
-          <span>Mogi das Cruzes — SP</span>
-        </div>
-      </div>
-    </footer>
   );
 }
 
 function Index() {
   return (
     <div className="min-h-screen bg-background">
-      <Nav />
+      <SiteNav />
       <Hero />
       <Stats />
       <Sobre />
       <Values />
       <Species />
-      <Distribution />
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }
