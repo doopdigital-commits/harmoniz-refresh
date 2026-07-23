@@ -4,6 +4,74 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Editorial refinements: fine textures, elegant motion, subtle depth. */
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes veil {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@utility rise-in {
+  animation: rise-in 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@utility veil-in {
+  animation: veil 1400ms ease-out both;
+}
+@utility text-balance {
+  text-wrap: balance;
+}
+@utility eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  font-size: 0.7rem;
+  color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  &::before {
+    content: "";
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.6;
+  }
+}
+@utility hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--primary) 35%, transparent), transparent);
+}
+@utility gilded {
+  background: linear-gradient(110deg,
+    var(--foreground) 20%,
+    color-mix(in oklab, var(--accent) 70%, var(--foreground)) 45%,
+    var(--foreground) 70%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s ease-in-out infinite;
+}
+@utility noise {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.05  0 0 0 0 0.2  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+}
+
 /*
  * Design system definition.
  *
@@ -100,6 +168,8 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --gradient-hero: linear-gradient(135deg, oklch(0.85 0.09 350 / 0.5), oklch(0.62 0.18 350 / 0.25));
   --shadow-soft: 0 20px 60px -20px oklch(0.42 0.14 350 / 0.35);
+  --shadow-elegant: 0 30px 80px -30px oklch(0.42 0.14 350 / 0.45), 0 8px 24px -12px oklch(0.42 0.14 350 / 0.2);
+  --gradient-veil: linear-gradient(180deg, transparent 0%, color-mix(in oklab, var(--primary) 12%, transparent) 100%);
 }
 
 .dark {
