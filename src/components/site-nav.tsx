@@ -14,29 +14,29 @@ const links = [
 export function SiteNav() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-background/85 border-b border-border/60">
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/40">
       <div className="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2 shrink-0">
-          <img src={logo} alt="Harmoniz Orquídeas" className="h-12 w-auto" />
+        <Link to="/" className="flex items-center gap-3 shrink-0 group">
+          <img src={logo} alt="Harmoniz Orquídeas" className="h-11 w-auto transition-transform duration-500 group-hover:scale-105" />
         </Link>
-        <nav className="hidden md:flex items-center gap-8 text-sm tracking-wide text-foreground/80">
+        <nav className="hidden md:flex items-center gap-10 text-[13px] tracking-[0.08em] text-foreground/70">
           {links.map((l) => (
             <Link
               key={l.to}
               to={l.to}
-              className="hover:text-accent transition-colors"
-              activeProps={{ className: "text-accent" }}
+              className="relative py-2 transition-colors hover:text-foreground after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-px after:bg-accent after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-500"
+              activeProps={{ className: "text-foreground [&::after]:scale-x-100" }}
               activeOptions={{ exact: true }}
             >
               {l.label}
             </Link>
           ))}
         </nav>
-        <div className="hidden md:flex items-center gap-2">
-          <a href="https://www.instagram.com/harmoniz_orquideas/" target="_blank" rel="noreferrer" className="p-2 rounded-full hover:bg-secondary transition-colors" aria-label="Instagram">
+        <div className="hidden md:flex items-center gap-1">
+          <a href="https://www.instagram.com/harmoniz_orquideas/" target="_blank" rel="noreferrer" className="p-2.5 rounded-full text-foreground/60 hover:text-accent hover:bg-secondary/60 transition-all duration-300" aria-label="Instagram">
             <Instagram className="h-4 w-4" />
           </a>
-          <a href="https://www.facebook.com/harmonizorquideas" target="_blank" rel="noreferrer" className="p-2 rounded-full hover:bg-secondary transition-colors" aria-label="Facebook">
+          <a href="https://www.facebook.com/harmonizorquideas" target="_blank" rel="noreferrer" className="p-2.5 rounded-full text-foreground/60 hover:text-accent hover:bg-secondary/60 transition-all duration-300" aria-label="Facebook">
             <Facebook className="h-4 w-4" />
           </a>
         </div>
