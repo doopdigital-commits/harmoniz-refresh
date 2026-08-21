@@ -48,7 +48,7 @@ function SonevidaPage() {
         </div>
       </section>
 
-      <section className="max-w-4xl mx-auto px-6 md:px-10 py-16 space-y-6 text-lg text-muted-foreground leading-relaxed">
+      <section className="max-w-4xl mx-auto px-6 md:px-10 py-20 space-y-7 text-lg text-muted-foreground leading-relaxed">
         <p>
           Na Harmoniz Orquídeas, acreditamos que as plantas, assim como nós, ressoam com o ambiente à sua volta. Para crescerem saudáveis e exuberantes, as orquídeas precisam de mais do que luz, água e nutrientes: elas precisam de <span className="text-foreground font-medium">harmonia e boas vibrações</span>.
         </p>

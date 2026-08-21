@@ -54,7 +54,7 @@ function Hero() {
   return (
     <section id="top" className="relative">
       <div className="relative h-[560px] md:h-[720px] overflow-hidden">
-        <img src={hero} alt="Estufa de orquídeas Harmoniz" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={hero} alt="Estufa de orquídeas Harmoniz" className="absolute inset-0 w-full h-full object-cover object-[50%_28%]" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/50 to-primary/10" />
         <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
         <span className="hidden md:inline-flex absolute top-8 right-8 lg:right-10 bg-background/90 backdrop-blur border border-border/60 rounded-full px-5 py-2 text-[11px] tracking-[0.25em] uppercase text-foreground/80 shadow-[var(--shadow-soft)]">
@@ -110,7 +110,7 @@ function Stats() {
 
 function Sobre() {
   return (
-    <section id="sobre" className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-28 grid md:grid-cols-12 gap-12">
+    <section id="sobre" className="max-w-7xl mx-auto px-6 md:px-10 py-28 md:py-36 grid md:grid-cols-12 gap-12 md:gap-16">
       <div className="md:col-span-5">
         <p className="eyebrow mb-8">A Harmoniz</p>
         <h2 className="font-display font-light text-4xl md:text-5xl leading-[1.1] text-balance">
@@ -153,15 +153,15 @@ const valueButtonTones = [
 
 function Values() {
   return (
-    <section id="valores" className="bg-secondary/30 py-24 md:py-28">
+    <section id="valores" className="bg-secondary/30 py-28 md:py-36">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
-        <div className="max-w-2xl mb-16">
+        <div className="max-w-2xl mb-20">
           <p className="eyebrow mb-8">Nossos pilares</p>
           <h2 className="font-display font-light text-4xl md:text-5xl leading-[1.1] text-balance">
             A Harmoniz Orquídeas <em className="italic text-accent">se preocupa</em> com…
           </h2>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {values.map((v, i) => (
             <article key={v.title} className="group flex flex-col overflow-hidden rounded-2xl bg-card text-card-foreground border border-border/60 shadow-[var(--shadow-soft)] hover:-translate-y-1 transition-all duration-500">
               <div className="relative aspect-[4/3] overflow-hidden">
@@ -170,7 +170,7 @@ function Values() {
                   0{i + 1}
                 </span>
               </div>
-              <div className="p-6 flex flex-col flex-1">
+              <div className="p-7 md:p-8 flex flex-col flex-1">
                 <h3 className="font-display italic font-normal text-2xl text-primary">{v.title}</h3>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-1">{v.desc}</p>
                 <Link
@@ -190,8 +190,8 @@ function Values() {
 
 function Species() {
   return (
-    <section id="especies" className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-28">
-      <div className="text-center max-w-2xl mx-auto mb-16">
+    <section id="especies" className="max-w-7xl mx-auto px-6 md:px-10 py-28 md:py-36">
+      <div className="text-center max-w-2xl mx-auto mb-20">
         <p className="eyebrow mb-8 justify-center">Espécies</p>
         <h2 className="font-display font-light text-4xl md:text-5xl leading-[1.1] text-balance">
           Quase 10 <em className="italic text-accent">gêneros</em> de orquídeas
