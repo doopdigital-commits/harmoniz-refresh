@@ -13,11 +13,11 @@ export function SiteFooter() {
           </div>
           <div className="md:col-span-8">
             <h3 className="font-display text-2xl md:text-3xl text-primary">Comercializados exclusivamente pelo Veiling Holambra</h3>
-            <p className="mt-4 text-muted-foreground flex items-start gap-2">
+            <p className="mt-4 text-foreground/75 flex items-start gap-2">
               <MapPin className="h-4 w-4 mt-1 shrink-0" />
               Rodovia SP-107, km 27 — S/N, Zona Rural Veiling, Santo Antônio de Posse — SP
             </p>
-            <div className="mt-3 flex flex-wrap gap-6 text-muted-foreground text-sm">
+            <div className="mt-3 flex flex-wrap gap-6 text-foreground/75 text-sm">
               <span className="flex items-center gap-2"><Mail className="h-4 w-4" /> sac@cvh.com.br</span>
               <span className="flex items-center gap-2"><Phone className="h-4 w-4" /> 0300 775 8955</span>
             </div>
