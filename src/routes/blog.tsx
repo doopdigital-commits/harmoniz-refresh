@@ -21,6 +21,12 @@ export const Route = createFileRoute("/blog")({
   component: BlogPage,
 });
 
+const categoryTones = [
+  "bg-accent text-accent-foreground",
+  "bg-foreground text-background",
+  "bg-secondary text-secondary-foreground",
+];
+
 const posts = [
   {
     img: blog1,
@@ -63,7 +69,7 @@ function BlogPage() {
       <SiteNav />
 
       <section className="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-12">
-        <p className="uppercase tracking-[0.3em] text-xs text-accent mb-6">Blog</p>
+        <p className="eyebrow mb-6">Blog</p>
         <h1 className="font-display text-5xl md:text-7xl leading-[1.02] max-w-3xl">
           Cultivo, energia e <em className="text-accent not-italic">harmonia</em>.
         </h1>
@@ -73,20 +79,20 @@ function BlogPage() {
       </section>
 
       <section className="max-w-7xl mx-auto px-6 md:px-10 pb-16">
-        <a href={featured.href} target="_blank" rel="noreferrer" className="group grid md:grid-cols-12 gap-8 items-center">
-          <div className="md:col-span-7 overflow-hidden rounded-3xl aspect-[4/3]">
+        <a href={featured.href} target="_blank" rel="noreferrer" className="group grid md:grid-cols-12 gap-8 items-center bg-card border border-border/60 rounded-3xl overflow-hidden shadow-[var(--shadow-soft)] p-3 md:p-4">
+          <div className="md:col-span-7 overflow-hidden rounded-2xl aspect-[4/3]">
             <img src={featured.img} alt={featured.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
           </div>
-          <div className="md:col-span-5">
-            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-accent">
-              <span>{featured.category}</span>
+          <div className="md:col-span-5 p-4 md:p-6">
+            <div className="flex items-center gap-3 text-xs">
+              <span className="bg-primary text-primary-foreground px-3 py-1.5 rounded-full uppercase tracking-[0.2em]">{featured.category}</span>
               <span className="text-muted-foreground">{featured.date}</span>
             </div>
             <h2 className="mt-4 font-display text-3xl md:text-4xl leading-tight group-hover:text-accent transition-colors">
               {featured.title}
             </h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">{featured.excerpt}</p>
-            <span className="mt-6 inline-flex items-center gap-2 text-primary font-medium">
+            <span className="mt-6 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
               Ler artigo <ArrowUpRight className="h-4 w-4" />
             </span>
           </div>
@@ -95,19 +101,21 @@ function BlogPage() {
 
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-16 border-t border-border/60">
         <div className="grid md:grid-cols-3 gap-8">
-          {rest.map((p) => (
-            <a key={p.href} href={p.href} target="_blank" rel="noreferrer" className="group">
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden">
+          {rest.map((p, i) => (
+            <a key={p.href} href={p.href} target="_blank" rel="noreferrer" className="group flex flex-col bg-card border border-border/60 rounded-2xl overflow-hidden shadow-[var(--shadow-soft)] hover:-translate-y-1 transition-transform duration-500">
+              <div className="aspect-[4/3] overflow-hidden">
                 <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
-              <div className="mt-5 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-accent">
-                <span>{p.category}</span>
-                <span className="text-muted-foreground">{p.date}</span>
+              <div className="p-6 flex flex-col flex-1">
+                <div className="flex items-center gap-3 text-xs">
+                  <span className={`px-3 py-1.5 rounded-full uppercase tracking-[0.2em] ${categoryTones[i % categoryTones.length]}`}>{p.category}</span>
+                  <span className="text-muted-foreground">{p.date}</span>
+                </div>
+                <h3 className="mt-3 font-display text-2xl leading-tight group-hover:text-accent transition-colors">
+                  {p.title}
+                </h3>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-1">{p.excerpt}</p>
               </div>
-              <h3 className="mt-3 font-display text-2xl leading-tight group-hover:text-accent transition-colors">
-                {p.title}
-              </h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.excerpt}</p>
             </a>
           ))}
         </div>

@@ -51,19 +51,21 @@ function GaleriaPage() {
     <div className="min-h-screen bg-background">
       <SiteNav />
 
-      <section className="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-12">
-        <p className="uppercase tracking-[0.3em] text-xs text-accent mb-6">Galeria</p>
-        <h1 className="font-display text-5xl md:text-7xl leading-[1.02] max-w-3xl">
-          Nossa galeria de flores.
-        </h1>
-        <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-          Uma coleção viva dos gêneros cultivados na Harmoniz — clique nas imagens para admirar cada detalhe.
-        </p>
-      </section>
-
-      <section className="max-w-7xl mx-auto px-6 md:px-10">
-        <div className="relative aspect-[1024/484] rounded-3xl overflow-hidden">
-          <img src={banner} alt="Galeria Harmoniz" className="w-full h-full object-cover" />
+      <section className="relative">
+        <div className="relative h-[420px] md:h-[520px] overflow-hidden">
+          <img src={banner} alt="Galeria Harmoniz" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/50 to-primary/10" />
+          <div className="relative h-full flex items-center">
+            <div className="max-w-7xl mx-auto px-6 md:px-10 w-full">
+              <div className="max-w-xl">
+                <p className="eyebrow mb-6 text-primary-foreground [&::before]:bg-primary-foreground">Galeria</p>
+                <h1 className="font-display font-light text-4xl md:text-6xl leading-[1.05] text-primary-foreground text-balance">Nossa galeria de flores.</h1>
+                <p className="mt-6 text-base md:text-lg text-primary-foreground/85 leading-relaxed font-light">
+                  Uma coleção viva dos gêneros cultivados na Harmoniz — clique nas imagens para admirar cada detalhe.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

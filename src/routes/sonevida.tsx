@@ -31,12 +31,12 @@ function SonevidaPage() {
 
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-20 text-center">
-          <p className="uppercase tracking-[0.3em] text-xs text-accent mb-6">Nosso método</p>
+          <p className="eyebrow mb-6 justify-center">Nosso método</p>
           <h1 className="font-display text-5xl md:text-7xl leading-[1.02] max-w-4xl mx-auto">
             Orquídeas que <em className="text-accent not-italic">ressoam</em> com o ambiente.
           </h1>
           <div className="mt-12 flex justify-center">
-            <img src={sonevidaLogo} alt="Sonevida" className="h-32 md:h-40 w-auto" />
+            <img src={sonevidaLogo} alt="Sonevida" className="h-48 md:h-64 w-auto" />
           </div>
         </div>
         <div aria-hidden className="absolute -top-24 -right-24 w-[520px] h-[520px] rounded-full blur-3xl opacity-40" style={{ background: "var(--gradient-hero)" }} />
@@ -60,7 +60,7 @@ function SonevidaPage() {
       <section className="bg-primary text-primary-foreground py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="max-w-2xl mb-16">
-            <p className="uppercase tracking-[0.3em] text-xs text-accent mb-6">Frequências que inspiram vida</p>
+            <p className="eyebrow mb-6">Frequências que inspiram vida</p>
             <h2 className="font-display text-4xl md:text-5xl leading-tight">Sons que atravessam a estufa.</h2>
             <p className="mt-6 text-primary-foreground/80 leading-relaxed">
               Inspirados por pesquisas que mostram como as plantas respondem a sons específicos, aplicamos frequências harmônicas ao longo de todo o cultivo — da germinação à floração.

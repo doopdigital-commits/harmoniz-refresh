@@ -20,6 +20,13 @@ export const Route = createFileRoute("/sobre")({
   component: SobrePage,
 });
 
+const timelineTones = [
+  "bg-primary text-primary-foreground",
+  "bg-accent text-accent-foreground",
+  "bg-foreground text-background",
+  "bg-secondary text-secondary-foreground",
+];
+
 const timeline = [
   { year: "1968", title: "O começo", desc: "Produção de gladíolos no bairro Itapeti, em Mogi das Cruzes." },
   { year: "Anos 70–80", title: "Expansão", desc: "Rosas, crisântemos, poinsétias, hortênsias e gérberas se somam ao portfólio." },
@@ -32,17 +39,20 @@ function SobrePage() {
     <div className="min-h-screen bg-background">
       <SiteNav />
 
-      <section className="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-16 grid md:grid-cols-12 gap-10 items-center">
-        <div className="md:col-span-6">
-          <p className="uppercase tracking-[0.3em] text-xs text-accent mb-6">Nossa história</p>
-          <h1 className="font-display text-5xl md:text-6xl leading-[1.05]">Uma paixão que atravessou o oceano e as gerações.</h1>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-            Do Japão para Mogi das Cruzes, do cultivo dos avós à floração de hoje — a Harmoniz é, antes de tudo, uma história de família.
-          </p>
-        </div>
-        <div className="md:col-span-6">
-          <div className="relative aspect-[5/4] rounded-[2rem] overflow-hidden shadow-[var(--shadow-soft)]">
-            <img src={hero} alt="Estufa Harmoniz" className="w-full h-full object-cover" />
+      <section className="relative">
+        <div className="relative h-[420px] md:h-[520px] overflow-hidden">
+          <img src={hero} alt="Estufa Harmoniz" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/50 to-primary/10" />
+          <div className="relative h-full flex items-center">
+            <div className="max-w-7xl mx-auto px-6 md:px-10 w-full">
+              <div className="max-w-xl">
+                <p className="eyebrow mb-6 text-primary-foreground [&::before]:bg-primary-foreground">Nossa história</p>
+                <h1 className="font-display font-light text-4xl md:text-6xl leading-[1.05] text-primary-foreground text-balance">Uma paixão que atravessou o oceano e as gerações.</h1>
+                <p className="mt-6 text-base md:text-lg text-primary-foreground/85 leading-relaxed font-light">
+                  Do Japão para Mogi das Cruzes, do cultivo dos avós à floração de hoje — a Harmoniz é, antes de tudo, uma história de família.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -73,7 +83,7 @@ function SobrePage() {
 
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32 grid md:grid-cols-12 gap-12">
         <div className="md:col-span-5">
-          <p className="uppercase tracking-[0.3em] text-xs text-accent mb-6">O nome</p>
+          <p className="eyebrow mb-6">O nome</p>
           <h2 className="font-display text-4xl md:text-5xl leading-tight">Harmonia + felicidade.</h2>
         </div>
         <div className="md:col-span-7 space-y-6 text-muted-foreground text-lg leading-relaxed">
@@ -86,19 +96,19 @@ function SobrePage() {
         </div>
       </section>
 
-      <section className="bg-secondary/40 border-y border-border/60">
+      <section className="bg-secondary/30">
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-24">
-          <p className="uppercase tracking-[0.3em] text-xs text-accent mb-6">Linha do tempo</p>
+          <p className="eyebrow mb-6">Linha do tempo</p>
           <h2 className="font-display text-4xl md:text-5xl leading-tight max-w-3xl">Mais de meio século florescendo.</h2>
-          <div className="mt-16 grid md:grid-cols-4 gap-8">
-            {timeline.map((t) => (
-              <div key={t.year} className="border-t border-accent pt-6">
-                <p className="font-display text-3xl text-primary">{t.year}</p>
-                <p className="mt-3 font-medium text-foreground">{t.title}</p>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t.desc}</p>
-              </div>
-            ))}
-          </div>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4">
+          {timeline.map((t, i) => (
+            <div key={t.year} className={`${timelineTones[i % timelineTones.length]} px-6 md:px-8 py-10 md:py-12`}>
+              <p className="font-display italic font-light text-3xl md:text-4xl leading-none">{t.year}</p>
+              <p className="mt-4 font-medium">{t.title}</p>
+              <p className="mt-2 text-[13px] opacity-80 leading-relaxed">{t.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -109,13 +119,16 @@ function SobrePage() {
           </div>
         </div>
         <div className="md:col-span-6 order-1 md:order-2">
-          <p className="uppercase tracking-[0.3em] text-xs text-accent mb-6">Continue</p>
+          <p className="eyebrow mb-6">Continue</p>
           <h2 className="font-display text-4xl md:text-5xl leading-tight">Conheça o método Sonevida.</h2>
           <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
             Um método exclusivo que une ciência moderna, sabedoria ancestral e frequências sonoras para nutrir cada orquídea.
           </p>
-          <Link to="/sonevida" className="mt-8 inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3.5 rounded-full text-sm hover:bg-primary/90 transition-colors">
-            Descubra o Sonevida <ArrowRight className="h-4 w-4" />
+          <Link to="/sonevida" className="group mt-8 inline-flex items-center gap-3 bg-primary text-primary-foreground pl-7 pr-2 py-2 rounded-full text-sm tracking-[0.05em] hover:bg-accent transition-all duration-500 shadow-[var(--shadow-soft)]">
+            Descubra o Sonevida
+            <span className="grid place-items-center h-10 w-10 rounded-full bg-primary-foreground/15 group-hover:bg-primary-foreground/25 group-hover:translate-x-0.5 transition-all duration-500">
+              <ArrowRight className="h-4 w-4" />
+            </span>
           </Link>
         </div>
       </section>
