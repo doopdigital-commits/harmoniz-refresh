@@ -79,11 +79,11 @@ function BlogPage() {
       </section>
 
       <section className="max-w-7xl mx-auto px-6 md:px-10 pb-16">
-        <a href={featured.href} target="_blank" rel="noreferrer" className="group grid md:grid-cols-12 gap-8 items-center bg-card border border-border/60 rounded-3xl overflow-hidden shadow-[var(--shadow-soft)] p-3 md:p-4">
+        <a href={featured.href} target="_blank" rel="noreferrer" className="group grid md:grid-cols-12 gap-8 items-center bg-card border border-border/60 rounded-3xl overflow-hidden shadow-[var(--shadow-soft)] p-4 md:p-6">
           <div className="md:col-span-7 overflow-hidden rounded-2xl aspect-[4/3]">
             <img src={featured.img} alt={featured.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
           </div>
-          <div className="md:col-span-5 p-4 md:p-6">
+          <div className="md:col-span-5 p-4 md:p-8">
             <div className="flex items-center gap-3 text-xs">
               <span className="bg-primary text-primary-foreground px-3 py-1.5 rounded-full uppercase tracking-[0.2em]">{featured.category}</span>
               <span className="text-muted-foreground">{featured.date}</span>
@@ -99,14 +99,14 @@ function BlogPage() {
         </a>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 md:px-10 py-16 border-t border-border/60">
-        <div className="grid md:grid-cols-3 gap-8">
+      <section className="max-w-7xl mx-auto px-6 md:px-10 py-20 border-t border-border/60">
+        <div className="grid md:grid-cols-3 gap-8 md:gap-10">
           {rest.map((p, i) => (
             <a key={p.href} href={p.href} target="_blank" rel="noreferrer" className="group flex flex-col bg-card border border-border/60 rounded-2xl overflow-hidden shadow-[var(--shadow-soft)] hover:-translate-y-1 transition-transform duration-500">
               <div className="aspect-[4/3] overflow-hidden">
                 <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
-              <div className="p-6 flex flex-col flex-1">
+              <div className="p-7 flex flex-col flex-1">
                 <div className="flex items-center gap-3 text-xs">
                   <span className={`px-3 py-1.5 rounded-full uppercase tracking-[0.2em] ${categoryTones[i % categoryTones.length]}`}>{p.category}</span>
                   <span className="text-muted-foreground">{p.date}</span>

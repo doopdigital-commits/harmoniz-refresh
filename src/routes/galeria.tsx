@@ -69,10 +69,10 @@ function GaleriaPage() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-24">
-        <div className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 [column-fill:_balance]">
+      <section className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28">
+        <div className="columns-2 md:columns-3 lg:columns-4 gap-6 md:gap-8 [column-fill:_balance]">
           {photos.map((p, i) => (
-            <figure key={i} className="mb-4 md:mb-6 break-inside-avoid group relative overflow-hidden rounded-2xl">
+            <figure key={i} className="mb-6 md:mb-8 break-inside-avoid group relative overflow-hidden rounded-2xl">
               <img src={p.img} alt={p.name} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
               <figcaption className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 to-transparent text-white font-display text-lg opacity-0 group-hover:opacity-100 transition-opacity">
                 {p.name}

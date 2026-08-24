@@ -41,7 +41,7 @@ function SobrePage() {
 
       <section className="relative">
         <div className="relative h-[420px] md:h-[520px] overflow-hidden">
-          <img src={hero} alt="Estufa Harmoniz" className="absolute inset-0 w-full h-full object-cover" />
+          <img src={hero} alt="Estufa Harmoniz" className="absolute inset-0 w-full h-full object-cover object-[50%_28%]" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/50 to-primary/10" />
           <div className="relative h-full flex items-center">
             <div className="max-w-7xl mx-auto px-6 md:px-10 w-full">
@@ -57,7 +57,7 @@ function SobrePage() {
         </div>
       </section>
 
-      <section className="max-w-4xl mx-auto px-6 md:px-10 py-16 space-y-6 text-lg text-muted-foreground leading-relaxed">
+      <section className="max-w-4xl mx-auto px-6 md:px-10 py-20 space-y-7 text-lg text-muted-foreground leading-relaxed">
         <p>
           Em 1968, a empresa iniciou a produção das flores de corte gladíolos no mesmo local onde está sediada até os dias atuais, no bairro Itapeti, em Mogi das Cruzes/SP.
         </p>
@@ -97,7 +97,7 @@ function SobrePage() {
       </section>
 
       <section className="bg-secondary/30">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 py-24">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-28">
           <p className="eyebrow mb-6">Linha do tempo</p>
           <h2 className="font-display text-4xl md:text-5xl leading-tight max-w-3xl">Mais de meio século florescendo.</h2>
         </div>
