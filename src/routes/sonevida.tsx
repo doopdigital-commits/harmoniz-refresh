@@ -5,6 +5,18 @@ import { Play, Music, Heart, Sparkles } from "lucide-react";
 import sonevidaLogo from "@/assets/harmoniz/sonevida-logo.png";
 import banner from "@/assets/harmoniz/sonevida-banner.png";
 
+const SITE_URL = "https://harmoniz.com.br";
+const PAGE_URL = `${SITE_URL}/sonevida`;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Início", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Sonevida", item: PAGE_URL },
+  ],
+};
+
 export const Route = createFileRoute("/sonevida")({
   head: () => ({
     meta: [
@@ -13,8 +25,12 @@ export const Route = createFileRoute("/sonevida")({
       { property: "og:title", content: "Sonevida — o método das frequências" },
       { property: "og:description", content: "Frequências harmônicas 432Hz e 528Hz aplicadas ao cultivo das nossas orquídeas." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: banner },
+      { property: "og:url", content: PAGE_URL },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: banner },
     ],
+    links: [{ rel: "canonical", href: PAGE_URL }],
   }),
   component: SonevidaPage,
 });
@@ -27,6 +43,10 @@ const frequencies = [
 function SonevidaPage() {
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <SiteNav />
 
       <section className="relative overflow-hidden">
@@ -44,7 +64,7 @@ function SonevidaPage() {
 
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-16">
         <div className="relative aspect-video rounded-3xl overflow-hidden shadow-[var(--shadow-soft)]">
-          <img src={banner} alt="Sonevida — método Harmoniz" className="w-full h-full object-cover" />
+          <img src={banner} alt="Sonevida — método Harmoniz" loading="lazy" className="w-full h-full object-cover" />
         </div>
       </section>
 

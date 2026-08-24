@@ -1,0 +1,26 @@
+name: Notify IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "public/sitemap.xml"
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract URLs and ping IndexNow
+        run: |
+          urls=$(grep -oP '(?<=<loc>).*?(?=</loc>)' public/sitemap.xml | jq -R . | jq -s .)
+          payload=$(jq -n \
+            --arg host "harmoniz.com.br" \
+            --arg key "dfd6fc4efa44835299732b1cf6132962" \
+            --arg keyLocation "https://harmoniz.com.br/dfd6fc4efa44835299732b1cf6132962.txt" \
+            --argjson urlList "$urls" \
+            '{host: $host, key: $key, keyLocation: $keyLocation, urlList: $urlList}')
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$payload"

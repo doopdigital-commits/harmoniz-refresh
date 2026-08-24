@@ -16,6 +16,18 @@ import cymbPend from "@/assets/harmoniz/g-cymbidium-pend.jpeg";
 import zygo from "@/assets/harmoniz/zygopetalum.jpeg";
 import denph from "@/assets/harmoniz/denphalaen.jpeg";
 
+const SITE_URL = "https://harmoniz.com.br";
+const PAGE_URL = `${SITE_URL}/galeria`;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Início", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Galeria", item: PAGE_URL },
+  ],
+};
+
 export const Route = createFileRoute("/galeria")({
   head: () => ({
     meta: [
@@ -24,8 +36,12 @@ export const Route = createFileRoute("/galeria")({
       { property: "og:title", content: "Galeria de orquídeas Harmoniz" },
       { property: "og:description", content: "Uma coleção visual das nossas orquídeas cultivadas com amor." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: banner },
+      { property: "og:url", content: PAGE_URL },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: banner },
     ],
+    links: [{ rel: "canonical", href: PAGE_URL }],
   }),
   component: GaleriaPage,
 });
@@ -49,6 +65,10 @@ const photos = [
 function GaleriaPage() {
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <SiteNav />
 
       <section className="relative">

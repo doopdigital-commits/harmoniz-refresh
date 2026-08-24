@@ -7,6 +7,18 @@ import blog2 from "@/assets/harmoniz/blog2.jpg";
 import blog3 from "@/assets/harmoniz/blog3.jpg";
 import blog4 from "@/assets/harmoniz/blog4.jpg";
 
+const SITE_URL = "https://harmoniz.com.br";
+const PAGE_URL = `${SITE_URL}/blog`;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Início", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Blog", item: PAGE_URL },
+  ],
+};
+
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
@@ -15,8 +27,12 @@ export const Route = createFileRoute("/blog")({
       { property: "og:title", content: "Blog Harmonia — Harmoniz Orquídeas" },
       { property: "og:description", content: "Conteúdo sobre cuidado, bioenergia e o universo das orquídeas." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: blog1 },
+      { property: "og:url", content: PAGE_URL },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: blog1 },
     ],
+    links: [{ rel: "canonical", href: PAGE_URL }],
   }),
   component: BlogPage,
 });
@@ -66,6 +82,10 @@ function BlogPage() {
   const [featured, ...rest] = posts;
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <SiteNav />
 
       <section className="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-12">
@@ -104,7 +124,7 @@ function BlogPage() {
           {rest.map((p, i) => (
             <a key={p.href} href={p.href} target="_blank" rel="noreferrer" className="group flex flex-col bg-card border border-border/60 rounded-2xl overflow-hidden shadow-[var(--shadow-soft)] hover:-translate-y-1 transition-transform duration-500">
               <div className="aspect-[4/3] overflow-hidden">
-                <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <img src={p.img} alt={p.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
               <div className="p-7 flex flex-col flex-1">
                 <div className="flex items-center gap-3 text-xs">
