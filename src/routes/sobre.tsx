@@ -38,7 +38,7 @@ export const Route = createFileRoute("/sobre")({
 
 const timelineTones = [
   "bg-primary text-primary-foreground",
-  "bg-accent text-accent-foreground",
+  "bg-accent text-ink",
   "bg-foreground text-background",
   "bg-secondary text-secondary-foreground",
 ];
@@ -58,6 +58,8 @@ function SobrePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <SiteNav />
+
+      <main>
 
       <section className="relative">
         <div className="relative h-[420px] md:h-[520px] overflow-hidden">
@@ -126,7 +128,7 @@ function SobrePage() {
             <div key={t.year} className={`${timelineTones[i % timelineTones.length]} px-6 md:px-8 py-10 md:py-12`}>
               <p className="font-display italic font-light text-3xl md:text-4xl leading-none">{t.year}</p>
               <p className="mt-4 font-medium">{t.title}</p>
-              <p className="mt-2 text-[13px] opacity-80 leading-relaxed">{t.desc}</p>
+              <p className="mt-2 text-[13px] leading-relaxed">{t.desc}</p>
             </div>
           ))}
         </div>
@@ -152,6 +154,8 @@ function SobrePage() {
           </Link>
         </div>
       </section>
+
+      </main>
 
       <SiteFooter />
     </div>

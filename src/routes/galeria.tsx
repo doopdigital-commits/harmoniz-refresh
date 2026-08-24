@@ -71,6 +71,8 @@ function GaleriaPage() {
       />
       <SiteNav />
 
+      <main>
+
       <section className="relative">
         <div className="relative h-[420px] md:h-[520px] overflow-hidden">
           <img src={banner} alt="Galeria Harmoniz" className="absolute inset-0 w-full h-full object-cover" />
@@ -101,6 +103,8 @@ function GaleriaPage() {
           ))}
         </div>
       </section>
+
+      </main>
 
       <SiteFooter />
     </div>
