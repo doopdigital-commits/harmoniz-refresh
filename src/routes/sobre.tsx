@@ -6,6 +6,18 @@ import hero from "@/assets/harmoniz/hero.jpg";
 import banner from "@/assets/harmoniz/sobre-banner.png";
 import diversidade from "@/assets/harmoniz/diversidade.jpg";
 
+const SITE_URL = "https://harmoniz.com.br";
+const PAGE_URL = `${SITE_URL}/sobre`;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Início", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Sobre", item: PAGE_URL },
+  ],
+};
+
 export const Route = createFileRoute("/sobre")({
   head: () => ({
     meta: [
@@ -14,8 +26,12 @@ export const Route = createFileRoute("/sobre")({
       { property: "og:title", content: "Sobre a Harmoniz Orquídeas" },
       { property: "og:description", content: "Uma história de família, tradição japonesa e paixão por orquídeas há mais de 50 anos." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: hero },
+      { property: "og:url", content: PAGE_URL },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: hero },
     ],
+    links: [{ rel: "canonical", href: PAGE_URL }],
   }),
   component: SobrePage,
 });
@@ -37,6 +53,10 @@ const timeline = [
 function SobrePage() {
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <SiteNav />
 
       <section className="relative">
@@ -77,7 +97,7 @@ function SobrePage() {
 
       <section className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="relative aspect-[1024/379] rounded-3xl overflow-hidden">
-          <img src={banner} alt="Harmoniz Orquídeas" className="w-full h-full object-cover" />
+          <img src={banner} alt="Harmoniz Orquídeas" loading="lazy" className="w-full h-full object-cover" />
         </div>
       </section>
 
@@ -115,7 +135,7 @@ function SobrePage() {
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32 grid md:grid-cols-12 gap-10 items-center">
         <div className="md:col-span-6 order-2 md:order-1">
           <div className="aspect-[4/5] rounded-[2rem] overflow-hidden">
-            <img src={diversidade} alt="Cultivo Harmoniz" className="w-full h-full object-cover" />
+            <img src={diversidade} alt="Cultivo Harmoniz" loading="lazy" className="w-full h-full object-cover" />
           </div>
         </div>
         <div className="md:col-span-6 order-1 md:order-2">

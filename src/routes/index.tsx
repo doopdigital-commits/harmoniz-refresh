@@ -16,7 +16,17 @@ import { Link } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 
+const SITE_URL = "https://harmoniz.com.br";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { property: "og:image", content: hero },
+      { property: "og:url", content: SITE_URL },
+      { name: "twitter:image", content: hero },
+    ],
+    links: [{ rel: "canonical", href: SITE_URL }, { rel: "preload", as: "image", href: hero, fetchPriority: "high" }],
+  }),
   component: Index,
 });
 
@@ -165,7 +175,7 @@ function Values() {
           {values.map((v, i) => (
             <article key={v.title} className="group flex flex-col overflow-hidden rounded-2xl bg-card text-card-foreground border border-border/60 shadow-[var(--shadow-soft)] hover:-translate-y-1 transition-all duration-500">
               <div className="relative aspect-[4/3] overflow-hidden">
-                <img src={v.img} alt={v.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1400ms] ease-out" />
+                <img src={v.img} alt={v.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1400ms] ease-out" />
                 <span className="absolute top-4 left-4 text-[10px] tracking-[0.3em] uppercase text-primary-foreground/90 bg-primary/70 backdrop-blur px-3 py-1.5 rounded-full">
                   0{i + 1}
                 </span>
@@ -204,7 +214,7 @@ function Species() {
         {species.map((s) => (
           <figure key={s.name} className="group text-center">
             <div className="relative aspect-square max-w-[168px] mx-auto rounded-full overflow-hidden border-4 border-secondary shadow-[var(--shadow-soft)]">
-              <img src={s.img} alt={s.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+              <img src={s.img} alt={s.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
             </div>
             <figcaption className="mt-5 font-display italic font-normal text-lg text-foreground">{s.name}</figcaption>
           </figure>

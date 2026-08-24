@@ -12,6 +12,24 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
+const SITE_URL = "https://harmoniz.com.br";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LocalBusiness"],
+  name: "Harmoniz Orquídeas",
+  url: SITE_URL,
+  logo: `${SITE_URL}/favicon.ico`,
+  image: `${SITE_URL}/favicon.ico`,
+  sameAs: ["https://www.instagram.com/harmoniz_orquideas/", "https://www.facebook.com/harmonizorquideas"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Mogi das Cruzes",
+    addressRegion: "SP",
+    addressCountry: "BR",
+  },
+};
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -83,6 +101,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Harmoniz Orquídeas — Cultivadas com amor" },
       { property: "og:description", content: "Orquídeas com alma, cultivadas com amor. Produção em Mogi das Cruzes com distribuição nacional." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Harmoniz Orquídeas" },
+      { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -107,7 +127,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
@@ -124,6 +144,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
