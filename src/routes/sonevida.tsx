@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
-import { Play, Music, Heart, Sparkles } from "lucide-react";
+import { Music, Heart, Sparkles } from "lucide-react";
 import sonevidaLogo from "@/assets/harmoniz/sonevida-logo.png";
 import banner from "@/assets/harmoniz/sonevida-banner.png";
+import { YouTubeEmbed } from "@/components/youtube-embed";
 
 const SITE_URL = "https://harmoniz.com.br";
 const PAGE_URL = `${SITE_URL}/sonevida`;
@@ -108,26 +109,8 @@ function SonevidaPage() {
       </section>
 
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32 grid md:grid-cols-2 gap-8">
-        <a href="https://www.youtube.com/watch?v=18SBhkemOB0" target="_blank" rel="noreferrer" className="group relative aspect-video rounded-3xl overflow-hidden bg-secondary flex items-center justify-center">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-accent/30" />
-          <div className="relative z-10 text-center text-primary-foreground">
-            <div className="mx-auto w-16 h-16 rounded-full bg-white/90 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Play className="h-6 w-6 ml-1" />
-            </div>
-            <p className="mt-4 font-display text-2xl">Harmoniz — Sonevida</p>
-            <p className="text-sm text-primary-foreground/80">Assista no YouTube</p>
-          </div>
-        </a>
-        <a href="https://www.youtube.com/watch?v=2dFq-_Y7mKQ" target="_blank" rel="noreferrer" className="group relative aspect-video rounded-3xl overflow-hidden bg-primary flex items-center justify-center">
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/40 to-primary/40" />
-          <div className="relative z-10 text-center text-primary-foreground">
-            <div className="mx-auto w-16 h-16 rounded-full bg-white/90 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Music className="h-6 w-6" />
-            </div>
-            <p className="mt-4 font-display text-2xl">Música exclusiva</p>
-            <p className="text-sm text-primary-foreground/80">Ouça a composição feita para a Harmoniz</p>
-          </div>
-        </a>
+        <YouTubeEmbed videoId="18SBhkemOB0" title="Harmoniz — Sonevida" className="rounded-3xl shadow-[var(--shadow-soft)]" />
+        <YouTubeEmbed videoId="2dFq-_Y7mKQ" title="Ouça a música criada para a Harmoniz" className="rounded-3xl shadow-[var(--shadow-soft)]" />
       </section>
 
       <section className="bg-secondary/40 border-y border-border/60 py-24">

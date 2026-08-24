@@ -15,6 +15,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
+import { YouTubeEmbed } from "@/components/youtube-embed";
 
 const SITE_URL = "https://harmoniz.com.br";
 
@@ -155,6 +156,29 @@ function Sobre() {
   );
 }
 
+function VideoShowcase() {
+  return (
+    <section className="max-w-7xl mx-auto px-6 md:px-10 pb-28 md:pb-36">
+      <div className="grid md:grid-cols-12 gap-10 mb-10 items-end">
+        <div className="md:col-span-7">
+          <p className="eyebrow mb-6">De olho na produção</p>
+          <h2 className="font-display font-light text-3xl md:text-4xl leading-[1.15] text-balance">
+            Conheça a Harmoniz <em className="italic text-accent">por dentro</em>
+          </h2>
+        </div>
+        <p className="md:col-span-5 text-muted-foreground leading-[1.8] font-light">
+          Um vídeo institucional produzido pelo Veiling Holambra, mostrando de perto a estufa e o cultivo das nossas orquídeas.
+        </p>
+      </div>
+      <YouTubeEmbed
+        videoId="NNh4qX8skYw"
+        title="De olho na produção: conheça a Harmoniz Orquídeas"
+        className="rounded-[2rem] shadow-[var(--shadow-elegant)]"
+      />
+    </section>
+  );
+}
+
 const valueButtonTones = [
   "bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground",
   "bg-accent text-ink hover:bg-primary hover:text-primary-foreground",
@@ -238,6 +262,7 @@ function Index() {
         <Hero />
         <Stats />
         <Sobre />
+        <VideoShowcase />
         <Values />
         <Species />
       </main>
