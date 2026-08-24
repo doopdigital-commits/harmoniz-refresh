@@ -38,7 +38,7 @@ export const Route = createFileRoute("/blog")({
 });
 
 const categoryTones = [
-  "bg-accent text-accent-foreground",
+  "bg-accent text-ink",
   "bg-foreground text-background",
   "bg-secondary text-secondary-foreground",
 ];
@@ -87,6 +87,8 @@ function BlogPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <SiteNav />
+
+      <main>
 
       <section className="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-12">
         <p className="eyebrow mb-6">Blog</p>
@@ -140,6 +142,8 @@ function BlogPage() {
           ))}
         </div>
       </section>
+
+      </main>
 
       <SiteFooter />
     </div>

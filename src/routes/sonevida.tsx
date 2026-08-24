@@ -49,6 +49,8 @@ function SonevidaPage() {
       />
       <SiteNav />
 
+      <main>
+
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-20 text-center">
           <p className="eyebrow mb-6 justify-center">Nosso método</p>
@@ -146,6 +148,8 @@ function SonevidaPage() {
           </div>
         </div>
       </section>
+
+      </main>
 
       <SiteFooter />
     </div>

@@ -102,7 +102,7 @@ function Hero() {
 function Stats() {
   const tones = [
     "bg-primary text-primary-foreground",
-    "bg-accent text-accent-foreground",
+    "bg-accent text-ink",
     "bg-foreground text-background",
     "bg-secondary text-secondary-foreground",
   ];
@@ -111,7 +111,7 @@ function Stats() {
       {stats.map((s, i) => (
         <div key={s.number} className={`${tones[i % tones.length]} px-6 md:px-8 py-10 md:py-12 flex flex-col justify-center`}>
           <p className="font-display italic font-light text-3xl md:text-4xl leading-none">{s.number}</p>
-          <p className="mt-4 text-[13px] opacity-80 leading-relaxed max-w-[200px]">{s.label}</p>
+          <p className="mt-4 text-[13px] leading-relaxed max-w-[200px]">{s.label}</p>
         </div>
       ))}
     </section>
@@ -144,7 +144,7 @@ function Sobre() {
           {structure.map((s, i) => (
             <div key={s.title} className="relative pl-5 py-1 border-l border-accent/40 hover:border-accent transition-colors group">
               <span className="absolute -left-[5px] top-2 h-2 w-2 rounded-full bg-accent group-hover:scale-125 transition-transform" />
-              <p className="text-[10px] tracking-[0.3em] uppercase text-accent/70 mb-2">0{i + 1}</p>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-primary mb-2">0{i + 1}</p>
               <p className="font-display text-xl text-foreground">{s.title}</p>
               <p className="text-sm mt-2 text-muted-foreground leading-relaxed">{s.desc}</p>
             </div>
@@ -157,7 +157,7 @@ function Sobre() {
 
 const valueButtonTones = [
   "bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground",
-  "bg-accent text-accent-foreground hover:bg-primary hover:text-primary-foreground",
+  "bg-accent text-ink hover:bg-primary hover:text-primary-foreground",
   "bg-foreground text-background hover:bg-accent hover:text-accent-foreground",
 ];
 
@@ -234,11 +234,13 @@ function Index() {
   return (
     <div className="min-h-screen bg-background">
       <SiteNav />
-      <Hero />
-      <Stats />
-      <Sobre />
-      <Values />
-      <Species />
+      <main>
+        <Hero />
+        <Stats />
+        <Sobre />
+        <Values />
+        <Species />
+      </main>
       <SiteFooter />
     </div>
   );

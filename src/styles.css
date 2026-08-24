@@ -32,7 +32,7 @@
   text-transform: uppercase;
   letter-spacing: 0.32em;
   font-size: 0.7rem;
-  color: var(--color-accent);
+  color: var(--color-primary);
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
@@ -108,6 +108,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-ink: var(--ink);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -146,6 +147,7 @@
   --muted-foreground: oklch(0.54 0.055 350);
   --accent: oklch(0.65 0.145 350);
   --accent-foreground: oklch(0.99 0.004 350);
+  --ink: oklch(0.22 0.05 350);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(0.89 0.03 350);
